@@ -1,7 +1,9 @@
-#include "../include/bmpheader.hpp"
+#include "../include/bitmap.hpp"
+
+Bitmap bitmap = bitmap_set(50, 100);
+int8_t* header = write_header(bitmap);
 
 int main{
-	Header header = set_header(50, 100);
-	write_header(header, "test.bmp");
+	bitmap_get(header, bitmap, "test", "../images");
 	return 0;
 }
