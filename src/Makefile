@@ -10,8 +10,8 @@ $(TARGET): main.o bitmap.o
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp
 
-bitmap.o: bitmap.cpp
-	$(CC) $(CFLAGS) -c bitmap.cpp
+bitmap.o: ../func_bitmap/bitmap.cpp
+	$(CC) $(CFLAGS) -c ../func_bitmap/bitmap.cpp
 
 clean:
 	rm -f $(TARGET) *.o

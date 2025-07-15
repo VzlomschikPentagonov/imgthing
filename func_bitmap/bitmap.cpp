@@ -1,0 +1,60 @@
+#include "../include/bitmap.hpp"
+
+using namespace std;
+
+//FILE* header_file;
+//FILE* image_file;
+
+Bitmap bitmap_set(uint16_t width,
+                  uint16_t height){
+	Bitmap bitmap;
+	bitmap.width = width;
+	bitmap.height = height;
+	bitmap.padding = width & 3;
+	bitmap.filesize = width * height * BYTES_PER_PIXEL + height * bitmap.padding;
+	return bitmap;
+}
+
+void header_get(Bitmap bitmap,
+				int8_t* header_buffer){
+	uint8_t i;
+	for(i = 4; i < HEADER_SIZE; i++){
+		header_buffer[i] = 0;
+	}
+	int8_t addresses[NUM_OF_ADDRESSES] =
+	{FORMAT_OFFSET_0, FORMAT_OFFSET_1, HEADER_SIZE_OFFSET,
+	HEADER_SIZE_OFFSET, COL_PLANES_OFFSET, BPP_OFFSET};
+	int8_t values[NUM_OF_ADDRESSES] = {'B', 'M', HEADER_SIZE,
+	BITMAPINFOHEADER, NUM_COL_PLANES, BPP};
+	for(i = 0; i < NUM_OF_ADDRESSES; i++){
+		header_buffer[addresses[i]] = values[i];
+	}
+//	header_file = fopen("header", "r+b");
+//	puts("11");
+//	fread(&header_buffer, HEADER_SIZE, SIZEOF_INT8_T, header_file);
+//	puts("12");
+	for(i = 0; i < SIZEOF_INT32_T; i++){
+		header_buffer[FILESIZE_OFFSET + i] = bitmap.filesize + HEADER_SIZE >> I_BYTES;
+		header_buffer[IMAGESIZE_OFFSET + i] = bitmap.filesize >> I_BYTES;
+	}
+	for(i = 0; i < SIZEOF_INT16_T; i++){
+		header_buffer[WIDTH_OFFSET + i] = bitmap.width >> I_BYTES;
+		header_buffer[HEIGHT_OFFSET + i] = bitmap.height >> I_BYTES;
+	}
+//	fclose(header_file);
+}
+
+//void bitmap_get(int8_t* header,
+//				Bitmap bitmap,
+//				Pixel* scanline,
+//				const char* path){
+//	char image_path[PATH_BUF_SIZE];
+//	snprintf(image_path, PATH_BUF_SIZE, "%s.bmp", path);
+//	image_file = fopen(image_path, "w+b");
+//	uint16_t i;
+//	for(i = 0; i < bitmap.height; i++){
+//		fwrite(&scanline, bitmap.width + bitmap.padding, SIZEOF_INT8_T, image_file);
+//	}
+//	fflush(image_file);
+//	fclose(image_file);
+//}
