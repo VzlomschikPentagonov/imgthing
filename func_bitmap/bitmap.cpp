@@ -15,7 +15,7 @@ Bitmap bitmap_set(uint16_t width,
 }
 
 void header_get(Bitmap bitmap,
-				int8_t* header_buffer){
+                int8_t* header_buffer){
 	uint8_t i;
 	for(i = 4; i < HEADER_SIZE; i++){
 		header_buffer[i] = 0;
@@ -39,9 +39,9 @@ void header_get(Bitmap bitmap,
 }
 
 void bitmap_get(int8_t* header,
-				Bitmap bitmap,
-				Pixel* scanline,
-				const char* path){
+                Bitmap bitmap,
+                Pixel* scanline,
+                const char* path){
 	char image_path[PATH_BUF_SIZE];
 	snprintf(image_path, PATH_BUF_SIZE, "%s.bmp", path);
 	image_file = fopen(image_path, "w+b");
