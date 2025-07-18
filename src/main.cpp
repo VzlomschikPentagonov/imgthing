@@ -7,14 +7,14 @@ FILE* image_out;
 
 int main(){
 	uint16_t i;
-	Parameters parameters[2] = {parameters_get("../images/image1"),
-	                            parameters_get("../images/image2")};
+	Parameters parameters[2] = {parameters_get("../images/image1", image_1),
+	                            parameters_get("../images/image2", image_2)};
 	Bitmap bitmap = bitmap_set(parameters[0].width, parameters[0].height);
 	Pixel scanline_in_1[bitmap.width], scanline_in_2[bitmap.width],
 	      scanline_out[bitmap.width];
 	int8_t header[HEADER_SIZE];
 	header_get(bitmap, header);
-	bitmap_get(header, bitmap, "../images/test");
+	bitmap_get(header, "../images/test", image_out);
 	fseek(image_1, HEADER_SIZE, SEEK_SET);
 	fseek(image_2, HEADER_SIZE, SEEK_SET);
 	for(i = 0; i < bitmap.height; i++){
