@@ -8,9 +8,9 @@ Parameters parameters_get(const char* path){
 	image_file = fopen(image_path, "r+b");
 	Parameters parameters;
 	for(i = 0; i < SIZEOF_INT16_T; i++){
-		fseek(image_file, WIDTH_OFFSET + i);
+		fseek(image_file, WIDTH_OFFSET + i, SEEK_SET);
 		parameters.width = bitmap.width >> I_BYTES;
-		fseek(image_file, HEIGHT_OFFSET + i);
+		fseek(image_file, HEIGHT_OFFSET + i, SEEK_SET);
 		parameters.height = bitmap.height >> I_BYTES;
 	}
 	return parameters;
@@ -52,10 +52,11 @@ void header_get(Bitmap bitmap,
 
 void bitmap_get(int8_t* header,
                 Bitmap* bitmaps,
-                const char* path){
+                const char* path,
+                FILE* bitmap_file){
 	char image_path[PATH_BUF_SIZE];
 	snprintf(image_path, PATH_BUF_SIZE, "%s.bmp", path);
-	image_file = fopen(image_path, "w+b");
+	bitmap_file = fopen(image_path, "w+b");
 	fwrite(&header, HEADER_SIZE, SIZEOF_INT8_T, image_file);
 	uint16_t i;
 }
