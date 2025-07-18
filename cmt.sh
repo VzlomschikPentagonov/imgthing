@@ -5,7 +5,7 @@ git add .
 git commit -m "$COMMIT_NAME"
 read PUSH_BRANCH
 case $PUSH_BRANCH in
- )
+ "")
   break
   ;;
  *)
