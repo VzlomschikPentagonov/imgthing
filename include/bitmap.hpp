@@ -3,6 +3,7 @@
 
 #include <cstdio>
 #include <cstdint>
+
 #define HEADER_SIZE 54
 #define BITMAPINFOHEADER 40
 #define NUM_COL_PLANES 1
@@ -31,14 +32,20 @@ typedef struct Pixel{
 	uint8_t red;
 }Pixel;
 
+<<<<<<< HEAD
 /*
+=======
+>>>>>>> bitmap_read_func
 typedef struct Parameters{
 	uint16_t width;
 	uint16_t height;
 }Parameters;
 
+<<<<<<< HEAD
 */
 
+=======
+>>>>>>> bitmap_read_func
 typedef struct Bitmap{
 	uint32_t filesize;
 	uint16_t width;

@@ -2,9 +2,12 @@
 
 int main(){
 	uint16_t i;
+<<<<<<< HEAD
 	/*
 	Bitmap bitmap = bitmap_set(50, 100);
 	*/
+=======
+>>>>>>> bitmap_read_func
 	Parameters parameters[2] = {parameters_get("../images/image1"),
 	                            parameters_get("../images/image2")};
 	Bitmap bitmaps[2] = {bitmap_set(parameters[0].width, parameters[0].height),
