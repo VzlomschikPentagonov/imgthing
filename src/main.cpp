@@ -2,7 +2,8 @@
 
 int main(){
 	uint16_t i;
-	Bitmap bitmap = bitmap_set(50, 100);
+	Bitmap bitmaps[2] = {bitmap_set(50, 100),
+	                     bitmap_set(64, 64)};
 	printf("%d, %hd, %hd, %hhd\n", bitmap.filesize, bitmap.width,
 			bitmap.height, bitmap.padding);
 	Pixel scanline[bitmap.width];
