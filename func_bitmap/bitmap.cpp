@@ -59,3 +59,14 @@ void bitmap_get(int8_t* header,
 	fwrite(&header, HEADER_SIZE, SIZEOF_INT8_T, image_file);
 	uint16_t i;
 }
+
+void bitmap_read(FILE* bitmap_file_1,
+	             FILE* bitmap_file_2,
+	             Pixel* scanline_1,
+	             Pixel* scanline_2,
+	             Bitmap bitmap){
+	fread(&scanline_1, bitmap.width * BYTES_PER_PIXEL, SIZEOF_INT8_T, bitmap_file_1);
+	fseek(bitmap_file_1, bitmap.padding, SEEK_CUR);
+	fread(&scanline_2, bitmap.width * BYTES_PER_PIXEL, SIZEOF_INT8_T, bitmap_file_2);
+	fseek(bitmap_file_2, bitmap.padding, SEEK_CUR);
+}
