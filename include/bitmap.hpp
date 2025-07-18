@@ -47,6 +47,7 @@ typedef struct Bitmap{
 Parameters parameters_get(const char*);
 Bitmap bitmap_set(uint16_t, uint16_t);
 void header_get(Bitmap, int8_t*);
-void bitmap_get(int8_t*, Bitmap, Pixel*, const char*);
+void bitmap_get(int8_t*, Bitmap, const char*);
+bitmap_read(FILE*, FILE*, Pixel*, Pixel*);
 
 #endif

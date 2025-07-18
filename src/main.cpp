@@ -15,7 +15,10 @@ int main(){
 	header_get(bitmap, header);
 	bitmap_get(header, bitmap, "../images/test");
 	for(i = 0; i < bitmap.height; i++){
-
+		bitmap_read(image_1, image_2,
+		            scanline_in_1, scanline_in_2);
+		add(bitmap, scanline_in_1, scanline_in_2,
+		           image_out, scanline_out);
 	}
 	fclose(image_1);
 	fclose(image_2);
