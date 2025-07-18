@@ -2,7 +2,19 @@
 
 using namespace std;
 
-FILE* image_file;
+Parameters parameters_get(const char* path){
+	char image_path[PATH_BUF_SIZE];
+	snprintf(image_path, PATH_BUF_SIZE, "%s.bmp", path);
+	image_file = fopen(image_path, "r+b");
+	Parameters parameters;
+	for(i = 0; i < SIZEOF_INT16_T; i++){
+		fseek(image_file, WIDTH_OFFSET + i);
+		parameters.width = bitmap.width >> I_BYTES;
+		fseek(image_file, HEIGHT_OFFSET + i);
+		parameters.height = bitmap.height >> I_BYTES;
+	}
+	return parameters;
+}
 
 Bitmap bitmap_set(uint16_t width,
                   uint16_t height){
@@ -39,18 +51,11 @@ void header_get(Bitmap bitmap,
 }
 
 void bitmap_get(int8_t* header,
-                Bitmap bitmap,
-                Pixel* scanline,
+                Bitmap* bitmaps,
                 const char* path){
 	char image_path[PATH_BUF_SIZE];
 	snprintf(image_path, PATH_BUF_SIZE, "%s.bmp", path);
 	image_file = fopen(image_path, "w+b");
 	fwrite(&header, HEADER_SIZE, SIZEOF_INT8_T, image_file);
 	uint16_t i;
-	for(i = 0; i < bitmap.height; i++){
-		fwrite(&scanline, bitmap.width * BYTES_PER_PIXEL + bitmap.padding,
-				SIZEOF_INT8_T, image_file);
-	}
-	fflush(image_file);
-	fclose(image_file);
 }

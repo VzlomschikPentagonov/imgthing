@@ -1,28 +1,24 @@
 #include "../include/bitmap.hpp"
 
+FILE* image_1;
+FILE* image_2;
+FILE* image_out;
+
 int main(){
 	uint16_t i;
-<<<<<<< HEAD
-	/*
-	Bitmap bitmap = bitmap_set(50, 100);
-	*/
-=======
->>>>>>> bitmap_read_func
 	Parameters parameters[2] = {parameters_get("../images/image1"),
 	                            parameters_get("../images/image2")};
-	Bitmap bitmaps[2] = {bitmap_set(parameters[0].width, parameters[0].height),
-	                     bitmap_set(parameters[1].width, parameters[1].height)};
-	printf("%d, %hd, %hd, %hhd\n", bitmap.filesize, bitmap.width,
-			bitmap.height, bitmap.padding);
-	Pixel scanline[bitmap.width];
+	Bitmap bitmap = bitmap_set(parameters[0].width, parameters[0].height);
+	Pixel scanline_in_1[bitmap.width], scanline_in_2[bitmap.width],
+	      scanline_out[bitmap.width];
 	int8_t header[HEADER_SIZE];
 	header_get(bitmap, header);
-	for(i = 0; i < bitmap.width; i++){
-		scanline[i].blue = 255;
-		scanline[i].green = 127;
-		scanline[i].red = 63;
+	bitmap_get(header, bitmap, "../images/test");
+	for(i = 0; i < bitmap.height; i++){
+
 	}
-	for(i = 0; i < HEADER_SIZE; i++) printf("%hhd ", header[i]);
-	bitmap_get(header, bitmap, scanline, "../images/test");
+	fclose(image_1);
+	fclose(image_2);
+	fclose(image_out);
 	return 0;
 }
