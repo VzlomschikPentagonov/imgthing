@@ -1,4 +1,5 @@
 #include "../include/bitmap.hpp"
+#include "../include/operations.hpp"
 
 FILE* image_1;
 FILE* image_2;
