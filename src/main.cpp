@@ -7,15 +7,15 @@ FILE* image_out;
 
 int main(){
 	uint16_t i, choice;
-	image_1 = fopen("../images/image1.bmp", "r+b");
-	image_2 = fopen("../images/image2.bmp", "r+b");
+	image_1 = fopen("../images/img1.bmp", "r+b");
+	image_2 = fopen("../images/img2.bmp", "r+b");
 	Parameters image_param_1 = parameters_get(image_1);
 	Bitmap bitmap = bitmap_set(image_param_1.width, image_param_1.height);
 	Pixel scanline_in_1[bitmap.width], scanline_in_2[bitmap.width],
 	      scanline_out[bitmap.width];
 	int8_t header[HEADER_SIZE];
 	header_get(bitmap, header);
-	image_out = fopen("../images/imageout.bmp", "w+b");
+	image_out = fopen("../images/imgout.bmp", "w+b");
 	fwrite(&header, HEADER_SIZE, SIZEOF_INT8_T, image_out);
 	fseek(image_1, HEADER_SIZE, SEEK_SET);
 	fseek(image_2, HEADER_SIZE, SEEK_SET);

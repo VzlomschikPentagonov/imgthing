@@ -2,6 +2,7 @@
 #define BITMAP_HPP
 
 #include <cstdio>
+#include <cstdlib>
 #include <cstdint>
 
 #define HEADER_SIZE 54
