@@ -13,7 +13,6 @@
 #define SIZEOF_INT16_T 2
 #define SIZEOF_INT32_T 4
 #define BLACK 0
-#define PATH_BUF_SIZE 128
 #define NUM_OF_ADDRESSES 6
 #define FORMAT_OFFSET_0 0
 #define FORMAT_OFFSET_1 1

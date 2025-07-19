@@ -33,7 +33,25 @@ int main(){
 		fseek(image_1, bitmap.padding, SEEK_CUR);
 		fread(&scanline_in_2, bitmap.width * BYTES_PER_PIXEL, SIZEOF_INT8_T, image_2);
 		fseek(image_2, bitmap.padding, SEEK_CUR);
-		add(bitmap, scanline_in_1, scanline_in_2, scanline_out);
+		switch(choice){
+			case 1:
+				add(bitmap, scanline_in_1, scanline_in_2, scanline_out);
+				break;
+			case 2:
+				subtract(bitmap, scanline_in_1, scanline_in_2, scanline_out);
+				break;
+			case 3:
+				multiply(bitmap, scanline_in_1, scanline_in_2, scanline_out);
+				break;
+			case 4:
+				bitwise_or(bitmap, scanline_in_1, scanline_in_2, scanline_out);
+				break;
+			case 5:
+				bitwise_and(bitmap, scanline_in_1, scanline_in_2, scanline_out);
+				break;
+			case 6:
+				bitwise_xor(bitmap, scanline_in_1, scanline_in_2, scanline_out);
+		}
 		fwrite(&scanline_out, bitmap.width * BYTES_PER_PIXEL, SIZEOF_INT8_T, image_out);
 		fflush(image_out);
 	}
