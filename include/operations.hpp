@@ -3,6 +3,6 @@
 
 #include "bitmap.hpp"
 
-void add(Bitmap, Pixel*, Pixel*, FILE*, Pixel*);
+void add(Bitmap, Pixel*, Pixel*,/* FILE*,*/ Pixel*);
 
 #endif
