@@ -2,11 +2,7 @@
 
 using namespace std;
 
-Parameters parameters_get(/*const char* path,*/
-	                      FILE* bitmap_file){
-//	char image_path[PATH_BUF_SIZE];
-//	snprintf(image_path, PATH_BUF_SIZE, "%s.bmp", path);
-//	bitmap_file = fopen(image_path, "r+b");
+Parameters parameters_get(FILE* bitmap_file){
 	Parameters parameters;
 	parameters.width = 0, parameters.height = 0;
 	uint16_t i;
@@ -55,23 +51,3 @@ void header_get(Bitmap bitmap,
 		header_buffer[HEIGHT_OFFSET + i] = bitmap.height >> I_BYTES;
 	}
 }
-
-//void bitmap_get(int8_t* header,
-//                const char* path,
-//                FILE* bitmap_file){
-//	char image_path[PATH_BUF_SIZE];
-//	snprintf(image_path, PATH_BUF_SIZE, "%s.bmp", path);
-//	bitmap_file = fopen(image_path, "w+b");
-//	fwrite(&header, HEADER_SIZE, SIZEOF_INT8_T, bitmap_file);
-//}
-
-//void bitmap_read(FILE* bitmap_file_1,
-//	             FILE* bitmap_file_2,
-//	             Pixel* scanline_1,
-//	             Pixel* scanline_2,
-//	             Bitmap bitmap){
-//	fread(&scanline_1, bitmap.width * BYTES_PER_PIXEL, SIZEOF_INT8_T, bitmap_file_1);
-//	fseek(bitmap_file_1, bitmap.padding, SEEK_CUR);
-//	fread(&scanline_2, bitmap.width * BYTES_PER_PIXEL, SIZEOF_INT8_T, bitmap_file_2);
-//	fseek(bitmap_file_2, bitmap.padding, SEEK_CUR);
-//}
